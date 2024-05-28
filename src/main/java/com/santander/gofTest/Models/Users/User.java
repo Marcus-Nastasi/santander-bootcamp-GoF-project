@@ -9,51 +9,50 @@ import java.math.BigInteger;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private BigInteger id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-    @Column
     private String name;
-
-    @Column
     private String email;
-
-    @Column
-    @ManyToOne
     private BigInteger address_id;
 
-    public BigInteger getId() {
-        return id;
+    public void update(User user) {
+        this.setName(user.getName());
+        this.setEmail(user.getEmail());
+        this.setAddress_id(user.getAddress_id());
     }
 
-    public void setId(BigInteger id) {
-        this.id = id;
+    public long getId() {
+        return id;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getEmail() {
         return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public BigInteger getAddress_id() {
         return address_id;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public void setAddress_id(BigInteger address_id) {
         this.address_id = address_id;
     }
 }
-
 
 

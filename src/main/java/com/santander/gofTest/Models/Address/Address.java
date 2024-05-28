@@ -9,11 +9,12 @@ import java.math.BigInteger;
 public class Address {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private BigInteger id;
 
     @Column
     private String street;
+
     @Column
     private String complement;
     @Column
@@ -22,6 +23,14 @@ public class Address {
     private String locale;
     @Column
     private String uf;
+
+    public void update(Address address) {
+        this.setStreet(address.getStreet());
+        this.setComplement(address.getComplement());
+        this.setNeighborhood(address.getNeighborhood());
+        this.setLocale(address.getLocale());
+        this.setUf(address.getUf());
+    }
 
     public BigInteger getId() {
         return id;
