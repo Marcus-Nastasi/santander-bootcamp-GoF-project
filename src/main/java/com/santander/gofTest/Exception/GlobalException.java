@@ -10,7 +10,7 @@ public class GlobalException {
 
     @ExceptionHandler(Throwable.class)
     public ResponseEntity<String> handle(Throwable throwable) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(throwable.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 }
 

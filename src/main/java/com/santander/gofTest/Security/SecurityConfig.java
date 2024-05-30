@@ -20,15 +20,17 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http
-                .csrf(AbstractHttpConfigurer::disable)
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(auth ->
-                        auth.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-                        .anyRequest().authenticated()
-                )
-                .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
-                .build();
+        return(
+            http
+            .csrf(AbstractHttpConfigurer::disable)
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authorizeHttpRequests(auth ->
+                    auth.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                    .anyRequest().authenticated()
+            )
+            .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
+            .build()
+        );
     }
 }
 

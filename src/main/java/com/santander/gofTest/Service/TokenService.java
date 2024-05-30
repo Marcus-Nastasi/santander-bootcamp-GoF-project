@@ -1,7 +1,6 @@
 package com.santander.gofTest.Service;
 
 import com.auth0.jwt.JWT;
-import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
@@ -41,7 +40,7 @@ public class TokenService {
             Algorithm algorithm = Algorithm.HMAC256(secret);
             return JWT.require(algorithm).withIssuer("api").build().verify(token).getSubject();
         } catch (JWTVerificationException e) {
-            throw new JWTVerificationException(e.getMessage());
+            return "";
         }
     }
 
