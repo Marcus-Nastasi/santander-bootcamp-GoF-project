@@ -35,9 +35,9 @@ public class AuthController {
         var auth = authenticationManager.authenticate(usernamePassword);
 
         UserDetails u = userRepo.findByEmail(data.email());
-        String token = tokenService.generate((User) u);
 
         if (passwordEncoder.matches(data.password(), u.getPassword())) {
+            String token = tokenService.generate((User) u);
             return ResponseEntity.status(200).body(token);
         }
 
