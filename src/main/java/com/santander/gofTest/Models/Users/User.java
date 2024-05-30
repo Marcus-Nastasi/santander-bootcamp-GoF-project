@@ -17,6 +17,7 @@ public class User implements UserDetails {
 
     private String name;
     private String email;
+    private String password;
     private BigInteger address_id;
 
     public void update(User user) {
@@ -32,7 +33,7 @@ public class User implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return this.password;
     }
 
     @Override
@@ -86,6 +87,10 @@ public class User implements UserDetails {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setAddress_id(BigInteger address_id) {

@@ -3,6 +3,7 @@ package com.santander.gofTest.Controller.User;
 import com.santander.gofTest.Models.Users.User;
 import com.santander.gofTest.Repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +14,8 @@ public class UserController {
 
     @Autowired
     private UserRepo userRepo;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping(value = "/users")
     public List<User> getUsers() {
@@ -26,6 +29,7 @@ public class UserController {
 
     @PostMapping(value = "/user/add")
     public void add(@RequestBody User user) {
+
         userRepo.save(user);
     }
 
