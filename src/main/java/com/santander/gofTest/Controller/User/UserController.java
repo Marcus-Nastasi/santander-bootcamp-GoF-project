@@ -29,7 +29,7 @@ public class UserController {
 
     @PostMapping(value = "/user/add")
     public void add(@RequestBody User user) {
-
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepo.save(user);
     }
 

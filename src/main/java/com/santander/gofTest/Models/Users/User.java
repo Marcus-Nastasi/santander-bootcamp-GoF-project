@@ -14,10 +14,13 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
+    @Column
     private String name;
+    @Column
     private String email;
+    @Column
     private String password;
+    @Column
     private BigInteger address_id;
 
     public void update(User user) {
